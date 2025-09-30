@@ -1,0 +1,84 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+    font-family: 'Cursive', sans-serif;
+}
+
+#night-sky {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#stars, #stars2, #brilliant-stars, .shooting-stars-container { position: absolute; inset: 0; z-index: -2; }
+#stars { background: transparent url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center; }
+#stars2 { background: transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center; animation: animStar 150s linear infinite; }
+@keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+.brilliant-star { position: absolute; background-color: #fff; border-radius: 50%; animation: twinkle 4s infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 16px #fff, 0 0 24px #00aaff; } }
+.shooting-star { position: absolute; height: 2px; width: 70px; background: linear-gradient(-45deg, rgba(255, 255, 255, 0.9), transparent); border-radius: 999px; filter: drop-shadow(0 0 6px rgba(153, 221, 255, 1)); animation: fall 2s ease-out forwards; }
+@keyframes fall { from { transform: var(--transform-start); opacity: 1; } to { transform: var(--transform-end); opacity: 0; } }
+
+.heart-constellation { position: absolute; opacity: 0; animation: fade-in-out 6s ease-in-out; z-index: -1; }
+.heart-constellation .star { position: absolute; width: 3px; height: 3px; background-color: #fff; border-radius: 50%; box-shadow: 0 0 8px #00aaff, 0 0 12px #fff; animation: pulse 2s infinite alternate; }
+.heart-constellation .star:nth-child(1) { top: 90%; left: 50%; } .heart-constellation .star:nth-child(2) { top: 65%; left: 20%; } .heart-constellation .star:nth-child(3) { top: 40%; left: 5%; } .heart-constellation .star:nth-child(4) { top: 20%; left: 25%; } .heart-constellation .star:nth-child(5) { top: 20%; left: 75%; } .heart-constellation .star:nth-child(6) { top: 40%; left: 95%; } .heart-constellation .star:nth-child(7) { top: 65%; left: 80%; } .heart-constellation .star:nth-child(8) { top: 40%; left: 50%; }
+@keyframes fade-in-out { 0%, 100% { opacity: 0; transform: scale(0.8); } 20%, 80% { opacity: 0.6; transform: scale(1); } }
+@keyframes pulse { from { transform: scale(0.8); } to { transform: scale(1.2); } }
+
+#content { position: relative; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: flex; flex-direction: column; align-items: center; }
+#main-title { color: #FFF; font-size: 2.8em; text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00aaff; opacity: 1; transition: opacity 1.5s ease; }
+#reveal-button { background-color: transparent; border: 2px solid #fff; color: #fff; padding: 15px 30px; font-size: 1.2em; border-radius: 50px; cursor: pointer; transition: all 0.5s ease; box-shadow: 0 0 15px #00aaff; margin-top: 20px; }
+#reveal-button:hover { background-color: #fff; color: #1B2735; box-shadow: 0 0 25px #fff, 0 0 40px #00aaff; }
+
+#constellation-canvas {
+    margin-top: 20px;
+    order: 2;
+    transition: filter 0.5s ease;
+}
+
+@keyframes heart-flash {
+    0% { filter: drop-shadow(0 0 10px #ff4da6); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 30px #ffffff) drop-shadow(0 0 50px #ff4da6); transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 10px #ff4da6); transform: scale(1); }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.heart-flash-effect {
+    animation: heart-flash 0.6s ease-in-out;
+}
+.heartbeat-effect {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+#final-message {
+    order: 3;
+    margin-top: 25px;
+    font-size: 2.8em;
+    color: #fff;
+}
+
+#final-message span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-shadow: 0 0 10px #fff, 0 0 25px #ff4da6, 0 0 40px #ff4da6;
+}
+#second-message {
+    order: 4;
+    margin-top: 15px;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 25px #ff4da6, 0 0 40px #ff4da6;
+    opacity: 0;
+}
