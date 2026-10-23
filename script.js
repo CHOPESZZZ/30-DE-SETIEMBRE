@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const text2 = "Feliz 30 de setiembre, mi Marysita hermosa 💖";
 
             setTimeout(() => {
-            secondMessage.innerHTML = text2; // aparece completo
+            secondMessage.innerHTML = text2;
             secondMessage.style.opacity = "0";
-            secondMessage.style.transition = "opacity 1.5s ease"; // fade-in suave
+            secondMessage.style.transition = "opacity 1.5s ease";
             setTimeout(() => {
             secondMessage.style.opacity = "1";
             }, 50);
